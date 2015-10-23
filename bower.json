@@ -1,0 +1,19 @@
+{
+  "name": "AppliAngular",
+  "version": "0.0.0",
+  "authors": [
+    "Alice Caporali <Alice.Caporali@e.ujf-grenoble.fr>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
