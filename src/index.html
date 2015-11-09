@@ -1,27 +1,59 @@
 <!doctype html>
-<html ng-app='helloModule'>
-<head>
-	<title>Angular</title>
-	<script src="lib/angular/angular.js"></script>
-	<script type="text/javascript" src="assets/js/controllers/hello.js"></script>
-</head>
-<body>
-	<div ng-controller="helloController as helloCtrl">
-      <label>Name:</label>
-      <input type="text" ng-model="yourName" placeholder="Enter a name here">
-      <hr>
-      <h1>Hello {{yourName}}!</h1>
+<html ng-app='myApp'>
+  <head>
+  	<title>Angular</title>
+  	<script src="lib/angular/angular.js"></script>
+  	<script type="text/javascript" src="assets/js/controllers/hello.js"></script>
+  	<script type="text/javascript" src="assets/js/controllers/contact.js"></script>
+    <script type="text/javascript" src="assets/js/controllers/checkin.js"></script>
+  	<script type="text/javascript" src="assets/js/app.js"></script>
+  </head>
+  <body>
+  	<!--<div ng-controller="helloController as helloCtrl">
+        <label>Name:</label>
+        <input type="text" ng-model="yourName" placeholder="Enter a name here">
+        <hr>
+        <h1>Hello {{yourName}}!</h1>
 
-      <p>{{helloCtrl.afficheLongeur(yourName) }}</p>
+        <p>{{helloCtrl.afficheLongeur(yourName) }}</p>
 
-      <p>{{helloCtrl.inverseChaine(yourName) }}</p>
+        <p>{{helloCtrl.inverseChaine(yourName) }}</p>
 
-      <ul>
-      	<li ng-repeat="lettre in helloCtrl.splitToList(yourName) track by $index">{{lettre}}</li>
-      </ul>
+        <ul>
+        	<li ng-repeat="lettre in helloCtrl.splitToList(yourName) track by $index">{{lettre}}</li>
+        </ul>
 
-      <p>{{helloCtrl.splitToList(yourName) }}</p>
+        <p>{{helloCtrl.splitToList(yourName) }}</p>
     </div>
 
-</body>
+    <div ng-controller="contactController as contactCtrl">
+    	
+     <div ng-repeat="contacts in contactCtrl.contacts track by $index"> 	
+    	<h3 ng-bind='contacts.name'></h3>
+    	<p>{{contacts.phone}}</p>
+    </div>  
+
+    <hr>
+    Recherche : <input type="text" ng-model="recherche">
+
+    <div ng-controller="contactController as contactCtrl">
+    	
+     <div ng-repeat="contacts in contactCtrl.contacts filter : contacts : recherche track by $index"> 	
+    	<h3 ng-bind='contacts.name'></h3>
+    	<p>{{contacts.phone}}</p>
+    </div> -->
+
+    <div ng-controller="checkinController as checkinCtrl">
+      <ul>
+        <li ng-repeat ='checkin in checkins'>
+          {{checkin.id}}
+        </li>
+      </ul>      
+    </div>
+
+
+
+
+
+  </body>
 </html>
