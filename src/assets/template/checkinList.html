@@ -1,0 +1,9 @@
+<h1>CheckIn List</h1>
+
+<div ng-controller="checkinController as checkinCtrl">
+      <ul>
+        <li ng-repeat ='checkin in checkins'>
+          <a href="#/checkin/{{checkin.id}}">{{checkin.id}}</a>
+        </li>
+      </ul>      
+    </div>

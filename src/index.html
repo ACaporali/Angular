@@ -10,6 +10,9 @@
   	<script type="text/javascript" src="assets/js/app.js"></script>
   </head>
   <body>
+
+    <div ng-view></div>
+
   	<!--<div ng-controller="helloController as helloCtrl">
         <label>Name:</label>
         <input type="text" ng-model="yourName" placeholder="Enter a name here">
@@ -44,13 +47,6 @@
     	<p>{{contacts.phone}}</p>
     </div> -->
 
-    <div ng-controller="checkinController as checkinCtrl">
-      <ul>
-        <li ng-repeat ='checkin in checkins'>
-          {{checkin.id}}
-        </li>
-      </ul>      
-    </div>
 
 
 
