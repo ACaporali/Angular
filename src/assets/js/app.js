@@ -1,7 +1,13 @@
 (function(angular){
 	'use strict';
 
-	angular.module('myApp',['helloModule','contactModule','checkinModule']);
+	angular.module('myApp',[
+		'ngRoute',
+		'helloModule','contactModule','checkinModule'
+		]);
+
+	
+
 	
 
 })(window.angular);
