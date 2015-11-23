@@ -5,16 +5,26 @@
 	.controller('checkinController', function($scope, $http){
 		console.log("bonjour");
 
-		$http({
-			method: 'GET',
-			url: 'http://checkin-api.dev.cap-liberte.com/checkin'
+		var getCheckInList = function(){
+			$http({
+				method: 'GET',
+				url: 'http://checkin-api.dev.cap-liberte.com/checkin'
 
-		}).then(function successCallback(response){
-			console.log(response.data);
-			$scope.checkins = response.data;
-		}, function errorCallback(response){
-			console.log(response);
+			}).then(function successCallback(response){
+				console.log(response.data);
+				$scope.checkins = response.data;
+			}, function errorCallback(response){
+				console.log(response);
+			});
+
+		};		
+
+		$scope.$on('EvenementRecharge', function(){ //Regarde si le $scope voit la chaine de caratère
+			console.log("evenement EvenementRecharge reçut");
+			getCheckInList();
 		});
+
+		
 		
 	})
 
@@ -33,12 +43,12 @@
 	})
 
 		
-	.controller('checkinFormController', function($scope, $http){
+	.controller('checkinFormController', function($rootScope, $scope, $http){
 		
 		if (navigator.geolocation) {
 	        navigator.geolocation.getCurrentPosition(function(position){
 	        	console.log(position); // Objet position retourné par getCurrentPosition
-	        	$scope.$apply(function(){ //$apply met a jour angular dans une fonction asynchrone
+	        	$scope.$apply(function(){ //$apply met a jour angular dans une fonction asynchrone (bricolage)
 					$scope.lat = position.coords.latitude;
 				    $scope.lng = position.coords.longitude;
 	        	});	        	
@@ -65,10 +75,11 @@
 				}
 
 			}).then(function successCallback(response){
+				$rootScope.$broadcast('EvenementRecharge');// retourne la chaine de caractère "EvenementRecharge" dans le rootScope (parent de tous les scope)
 				console.log(response.data);
 				$scope.checkins = response.data;
 			}, function errorCallback(response){
-				//console.log(response);
+				console.log(response);
 			});
 
 		};					
