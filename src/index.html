@@ -49,13 +49,15 @@
       <a href>Ajouter un checkin</a>
 
       <div>
-        <form ng-submit="submit()" ng-controller="checkinFormController">
-          <input type="text" name="lat" ng-model="lat" value="" placeholder="latitude"/>
-          <input type="text" name="lng" ng-model="lng" value="" placeholder="longitude"/>
-          <input type="submit" name="submit" value="Checkin"/>
-        </form>
-        
 
+        <form ng-submit="submit()" ng-controller="checkinFormController">
+          <input type="text" name="lat" id="coordLat" ng-model="lat" value="" placeholder="latitude"/>
+          <input type="text" name="lng" id="coordLng" ng-model="lng" value="" placeholder="longitude"/>
+          <input type="submit" name="submit" value="Ajouter"/>
+        </form>
+
+        
+        
       </div>
 
 
@@ -63,6 +65,10 @@
     </header>
 
     <div ng-view></div>
+    
+
+   
+        
 
 
 

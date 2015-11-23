@@ -19,7 +19,6 @@
 	})
 
 	.controller('checkinDetailsController', function($routeParams, $http, $scope){
-		console.log("lala");
 		console.log($routeParams);
 		$http({
 			method: 'GET',
@@ -31,11 +30,25 @@
 		}, function errorCallback(response){
 			//console.log(response);
 		});
-
 	})
 
 		
 	.controller('checkinFormController', function($scope, $http){
+		
+		if (navigator.geolocation) {
+	        navigator.geolocation.getCurrentPosition(function(position){
+	        	console.log(position); // Objet position retourné par getCurrentPosition
+	        	$scope.$apply(function(){ //$apply met a jour angular dans une fonction asynchrone
+					$scope.lat = position.coords.latitude;
+				    $scope.lng = position.coords.longitude;
+	        	});	        	
+	        });
+	    } 
+
+	    else { 
+	        //x.innerHTML = "Geolocation is not supported by this browser.";
+	    }					
+
 		$scope.submit = function(){
 			console.log($scope.lat + ' ' + $scope.lng);
 
@@ -58,8 +71,7 @@
 				//console.log(response);
 			});
 
-
-		};
+		};					
 	});
 		
 
