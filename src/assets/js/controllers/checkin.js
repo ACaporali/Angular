@@ -1,7 +1,7 @@
 (function(angular){
 	'use strict';
 
-	angular.module('checkinModule',[])
+	angular.module('checkinModule',['LocalStorageModule'])
 	.controller('checkinController', function($scope, $http){
 		console.log("bonjour");
 
@@ -17,39 +17,38 @@
 				console.log(response);
 			});
 
-		};		
+		};	
 
 		$scope.$on('EvenementRecharge', function(){ //Regarde si le $scope voit la chaine de caratère
 			console.log("evenement EvenementRecharge reçut");
 			getCheckInList();
 		});
-
 		
 		
 	})
 
 	.controller('checkinDetailsController', function($routeParams, $http, $scope){
-		console.log($routeParams);
+		console.log("lala"+$routeParams);
 		$http({
 			method: 'GET',
 			url: 'http://checkin-api.dev.cap-liberte.com/checkin/'+$routeParams.checkinId+''
 
 		}).then(function successCallback(response){
 			console.log(response.data);
-			$scope.checkins = response.data;
+			$scope.checkin = response.data;
 		}, function errorCallback(response){
 			//console.log(response);
 		});
 	})
 
 		
-	.controller('checkinFormController', function($rootScope, $scope, $http){
+	.controller('checkinFormController', function($rootScope, $scope, $http, localStorageService, $routeParams){
 		
 		if (navigator.geolocation) {
 	        navigator.geolocation.getCurrentPosition(function(position){
 	        	console.log(position); // Objet position retourné par getCurrentPosition
-	        	$scope.$apply(function(){ //$apply met a jour angular dans une fonction asynchrone (bricolage)
-					$scope.lat = position.coords.latitude;
+	        	$scope.$apply(function(){ //$apply met a jour angular dans une fonction asynchrone 
+					$scope.lat = position.coords.latitude;//
 				    $scope.lng = position.coords.longitude;
 	        	});	        	
 	        });
@@ -62,6 +61,24 @@
 		$scope.submit = function(){
 			console.log($scope.lat + ' ' + $scope.lng);
 
+			var key = $routeParams.checkinId;
+			//var val = [ lat, lng];
+
+			//console.log("key " +key);
+
+			if(localStorageService.isSupported) {
+    			function (key, val) {
+   					return localStorageService.set(key, "val");
+  				}
+
+  				function getItem(key) {
+   					return localStorageService.get("key");
+  				}
+  			}
+			
+
+			console.log("localStorageService " + localStorageService.get("key"));
+
 			$http({
 				method: 'POST',
 				url: 'http://checkin-api.dev.cap-liberte.com/checkin',
@@ -71,7 +88,6 @@
 				},
 				headers:{
 					'Content-Type': undefined
-
 				}
 
 			}).then(function successCallback(response){
@@ -81,7 +97,6 @@
 			}, function errorCallback(response){
 				console.log(response);
 			});
-
 		};					
 	});
 		
