@@ -47,6 +47,8 @@
 				}).then(function successCallback(response){
 					console.log(response.data);
 					$scope.weather = response.data;
+					/*$scope.icon = $scope.weather.weather[0].icon;
+					console.log($scope.icon);*/
 
 				}, function errorCallback(response){
 					//console.log(response);

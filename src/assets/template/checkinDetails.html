@@ -8,10 +8,9 @@
 	  		{{checkin.user.name}}
 	  	</p>
 	  	<p>
-	  		{{weather.coord.lon}}
-	  		{{weather.coord.lat}}
-	  		{{weather.name}}
-	  		{{weather.main.temp}}
+	  		<img src="/images/icons/{{weather.weather[0].icon}}.png">
+	  		{{weather.name}},
+	  		{{weather.main.temp}}°C,
 	  		{{weather.weather[0].description}}
 	  	</p>
   	</div>
