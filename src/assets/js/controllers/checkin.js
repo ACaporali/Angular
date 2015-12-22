@@ -42,7 +42,7 @@
 			function openWeatherMap(){
 				$http({
 					method: 'GET',
-					url: 'http://api.openweathermap.org/data/2.5/weather?lat='+$scope.checkin.lat+'&lon='+$scope.checkin.lng+'&appid=1084fe7b11d7b5de600c40f277b2b42c'			
+					url: 'http://api.openweathermap.org/data/2.5/weather?lat='+$scope.checkin.lat+'&lon='+$scope.checkin.lng+'&appid=1084fe7b11d7b5de600c40f277b2b42c&lang=fr&units=metric'			
 					//utiliser la lat et long récupéré dans le checkin au dessus
 				}).then(function successCallback(response){
 					console.log(response.data);
