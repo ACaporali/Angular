@@ -17,7 +17,9 @@
 				console.log(response);
 			});
 
-		};	
+		};
+
+		getCheckInList();	
 
 		$scope.$on('EvenementRecharge', function(){ //Regarde si le $scope voit la chaine de caratère
 			console.log("evenement EvenementRecharge reçut");
@@ -27,15 +29,30 @@
 		
 	})
 
-	.controller('checkinDetailsController', function($routeParams, $http, $scope){
-		console.log("lala"+$routeParams);
+	.controller('checkinDetailsController', function($routeParams, $http, $scope, $rootScope){
+
 		$http({
 			method: 'GET',
 			url: 'http://checkin-api.dev.cap-liberte.com/checkin/'+$routeParams.checkinId+''
 
 		}).then(function successCallback(response){
+			console.log($routeParams);
 			console.log(response.data);
 			$scope.checkin = response.data;
+			function openWeatherMap(){
+				$http({
+					method: 'GET',
+					url: 'http://api.openweathermap.org/data/2.5/weather?lat='+$scope.checkin.lat+'&lon='+$scope.checkin.lng+'&appid=1084fe7b11d7b5de600c40f277b2b42c'			
+					//utiliser la lat et long récupéré dans le checkin au dessus
+				}).then(function successCallback(response){
+					console.log(response.data);
+					$scope.weather = response.data;
+
+				}, function errorCallback(response){
+					//console.log(response);
+				});
+			};
+			openWeatherMap();
 		}, function errorCallback(response){
 			//console.log(response);
 		});
@@ -66,7 +83,7 @@
 
 			//console.log("key " +key);
 
-			if(localStorageService.isSupported) {
+			/*if(localStorageService.isSupported) {
     			function (key, val) {
    					return localStorageService.set(key, "val");
   				}
@@ -74,7 +91,7 @@
   				function getItem(key) {
    					return localStorageService.get("key");
   				}
-  			}
+  			}*/
 			
 
 			console.log("localStorageService " + localStorageService.get("key"));

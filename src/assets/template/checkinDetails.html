@@ -1,10 +1,19 @@
 <h1>CheckIn Details</h1>
 
 <div ng-controller="checkinDetailsController as checkinDetailCtrl">
-  	<img ng-src="{{checkin.user.picture}}">
-  	<p>  		
-  		{{checkin.user.id}}
-  		{{checkin.user.name}}
-  	</p>
+  	<div>
+		<img ng-src="{{checkin.user.picture}}">
+	  	<p>  		
+	  		{{checkin.user.id}}
+	  		{{checkin.user.name}}
+	  	</p>
+	  	<p>
+	  		{{weather.coord.lon}}
+	  		{{weather.coord.lat}}
+	  		{{weather.name}}
+	  		{{weather.weather[0].description}}
+	  	</p>
+  	</div>
+  	
    
 </div>
