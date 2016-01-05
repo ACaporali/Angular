@@ -6,7 +6,9 @@
     <link rel="stylesheet" href="assets/css/styles.css" media="screen" title="no title">
     <!-- endbuild -->
     <script type="text/javascript" src="cordova.js"></script>
+
     <!-- build:js assets/js/combined.js -->
+    <script src="lib/google-map/angular-google-maps.js"></script>
   	<script src="lib/angular/angular.js"></script>
     <script src="lib/angular-route/angular-route.js"></script>
   	<script type="text/javascript" src="assets/js/controllers/hello.js"></script>
@@ -61,9 +63,8 @@
           <input type="text" name="lat" id="coordLat" ng-model="lat" value="" placeholder="latitude"/><!-- ng-model="lat" corespond à $scope.lat dans checkinFormController -->
           <input type="text" name="lng" id="coordLng" ng-model="lng" value="" placeholder="longitude"/><!-- ng-model="lng" corespond à $scope.lng dans checkinFormController -->
           <input type="submit" name="submit" value="Ajouter"/>
-        </form>
+        </form>     
       
-        
       </div>
 
 
@@ -71,6 +72,8 @@
     </header>
 
     <div ng-view></div>
+
+    <a href="test.html">test.html</a>
     
 
    

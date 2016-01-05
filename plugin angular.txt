@@ -1,0 +1,7 @@
+Recaptcha :
+doc :https://github.com/VividCortex/angular-recaptcha
+api google (clé api):https://www.google.com/recaptcha/admin#site/320079830?setup
+
+Googlemap:
+installation: http://angular-ui.github.io/angular-google-maps/#!/use
+lien site: http://ngmodules.org/modules/angular-google-maps
