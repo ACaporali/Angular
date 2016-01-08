@@ -1,10 +1,67 @@
+header{
+	margin-bottom : 40px;
+}
 body{
 	background-color: #f6f6f6;
 }
 
-
-p{
+h1{
 	text-align: center;
-	background-color: #fff;
-	padding: 10px;
 }
+
+hr{
+	height: 3px;
+	width: 7%;
+	background-color: #000000;
+}
+
+a{
+	text-decoration:none; 
+	color: #000000;	
+}
+
+a:hover{
+	color: #e1e1e1;
+	}
+
+
+.coprs{
+	min-height: 100%;
+	background-color: #ffffff;
+	width: 70%;
+	margin: auto; /* Permet de centrer la div */
+	padding: 30px;
+	display: table;
+}
+
+.ul{
+	list-style:none;
+	text-align: center;
+}
+
+.li{
+	float: left;
+	width: 20%;
+	margin: 5px;
+	padding: 10px 5px 10px 5px;
+	background-color: #229EE4;
+	margin: 10px;
+}
+
+.boutonRetour{
+	padding: 7px;
+	text-align: center;
+	border-radius: 3px;
+	background: transparent linear-gradient(#42BAFF, #229EE4) repeat scroll 0% 0%;
+}
+
+.boutonRetour:hover{
+		color: #222;
+     	background: #555;
+     	background: linear-gradient( #229EE4, #1A73A6);
+	}
+
+#map-canvas{
+    height: 400px;
+    width: 700px;
+ }

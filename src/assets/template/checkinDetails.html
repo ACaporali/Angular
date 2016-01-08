@@ -1,4 +1,6 @@
+<a class="boutonRetour" href="http://localhost:3000/#/">Retour à la liste</a>
 <h1>CheckIn Details</h1>
+<hr>
 
 <div ng-controller="checkinDetailsController as checkinDetailCtrl">
   	<div>
@@ -12,9 +14,10 @@
 	  		{{weather.name}},
 	  		{{weather.main.temp}}°C,
 	  		{{weather.weather[0].description}}
+	  		{{weather.coord.lat}}
+	  		{{weather.coord.lon}}
 
-	  	</p>
-  	</div>
-  	
-   
+	  	<my-maps id="map-canvas" lat="{{weather.coord.lat}}" lon="{{weather.coord.lon}}"></my-maps>
+	  	</p>	  	
+  	</div>  
 </div>

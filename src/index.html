@@ -7,8 +7,9 @@
     <!-- endbuild -->
     <script type="text/javascript" src="cordova.js"></script>
 
+    <script src="//maps.googleapis.com/maps/api/js?sensor=false"></script>
+
     <!-- build:js assets/js/combined.js -->
-    <script src="lib/google-map/angular-google-maps.js"></script>
   	<script src="lib/angular/angular.js"></script>
     <script src="lib/angular-route/angular-route.js"></script>
   	<script type="text/javascript" src="assets/js/controllers/hello.js"></script>
@@ -55,7 +56,7 @@
     </div> -->
 
     <header>
-      <a href>Ajouter un checkin</a>
+      <p>Ajouter un checkin</p>
 
       <div>
 
@@ -71,17 +72,9 @@
 
     </header>
 
-    <div ng-view></div>
+    <div class="coprs"ng-view></div>
 
     <a href="test.html">test.html</a>
-    
-
-   
-        
-
-
-
-
 
 
   </body>
