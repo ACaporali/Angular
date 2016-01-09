@@ -1,6 +1,7 @@
 header{
 	margin-bottom : 40px;
 }
+
 body{
 	background-color: #f6f6f6;
 }
@@ -22,7 +23,12 @@ a{
 
 a:hover{
 	color: #e1e1e1;
-	}
+}
+
+.ng-binding{
+	margin-top : 0px;
+	margin-bottom: 0px;
+}
 
 
 .coprs{
@@ -59,9 +65,51 @@ a:hover{
 		color: #222;
      	background: #555;
      	background: linear-gradient( #229EE4, #1A73A6);
-	}
+}
+
+.detail{
+	margin-top : 40px;
+	height: 300px;
+	width: 100%;
+	overflow: hidden;
+}
+
+.photoCheckinDetail{
+  	height: auto;
+  	width: 100%;
+}
+
+.detailImg{
+	float: left;
+	width: 50%;
+}
+
+.detailInfo{
+	float: left;
+	width: auto;
+	margin: 10px;
+}
+
+.meteo{
+	display: block;
+	margin-top : 20px;
+}
+
+.meteoImg{
+	height: auto;
+  	width: auto;
+}
+
+.meteoInfo{
+	text-align: center;
+}
+
+.map{
+	margin-top : 10px;
+}
+
 
 #map-canvas{
-    height: 400px;
-    width: 700px;
+    height: 200px;
+    width: auto;
  }
