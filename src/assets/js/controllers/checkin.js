@@ -83,16 +83,6 @@
 		$scope.submit = function(){
 			console.log($scope.lat + ' ' + $scope.lng);
 
-			/*var key = $routeParams.checkinId;
-			if(localStorageService.isSupported) {
-    			function submit(key, val) {
-   					return localStorageService.set('property', 'oldValue');
-   					console.log("localStorageService " + localStorageService.get('property'));
-  				}.then(function successCallback(response){
-					$rootScope.$broadcast('localStorageFait');// retourne la chaine de caractère "localStorageFait" dans le rootScope (parent de tous les scope)
-				}
-  			}*/
-
   			//localStorage
   			var checkIns = localStorageService.get('checkIns');
   			if (checkIns === null){
