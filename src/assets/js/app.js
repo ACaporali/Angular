@@ -51,7 +51,7 @@
 
               var marker = new google.maps.Marker({
                 position: myLatLng,
-                title:"Hello World!"
+                title:"Ma position"
               });
               marker.setMap(map);
             }
