@@ -25,6 +25,10 @@
 			console.log("evenement EvenementRecharge reçut");
 			getCheckInList();
 		});
+
+		$scope.$on('localStorageFait', function(){
+			console.log("evenement localStorageFait reçut");
+		});	
 		
 		
 	})
@@ -79,23 +83,34 @@
 		$scope.submit = function(){
 			console.log($scope.lat + ' ' + $scope.lng);
 
-			var key = $routeParams.checkinId;
-			//var val = [ lat, lng];
-
-			//console.log("key " +key);
-
-			/*if(localStorageService.isSupported) {
-    			function (key, val) {
-   					return localStorageService.set(key, "val");
-  				}
-
-  				function getItem(key) {
-   					return localStorageService.get("key");
-  				}
+			/*var key = $routeParams.checkinId;
+			if(localStorageService.isSupported) {
+    			function submit(key, val) {
+   					return localStorageService.set('property', 'oldValue');
+   					console.log("localStorageService " + localStorageService.get('property'));
+  				}.then(function successCallback(response){
+					$rootScope.$broadcast('localStorageFait');// retourne la chaine de caractère "localStorageFait" dans le rootScope (parent de tous les scope)
+				}
   			}*/
-			
 
-			console.log("localStorageService " + localStorageService.get("key"));
+  			//localStorage
+  			var checkIns = localStorageService.get('checkIns');
+  			if (checkIns === null){
+  				checkIns = [];
+  			}
+
+  			var coordonnees = {
+  				lat : $scope.lat,
+  				lng : $scope.lng
+  			}
+
+  			checkIns.push(coordonnees);
+
+  			localStorageService.set('checkIns', checkIns);
+
+  			//self.updatecontroleur : augment de 1
+
+			
 
 			$http({
 				method: 'POST',

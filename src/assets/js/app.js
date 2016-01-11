@@ -2,7 +2,7 @@
 	'use strict';
 
 	var myApp = angular.module('myApp',[
-		'ngRoute',
+		'ngRoute', 'LocalStorageModule',
 		'helloModule','contactModule','checkinModule'
 	])
 
@@ -21,17 +21,23 @@
 	myApp.directive('myMaps', function(){
         return{
         	scope :{
-        		lat: '@lat',
-        		lon: '@lon'
+        		lat: '@',
+        		lon: '@'
         	},
           restrict: 'E',
           template: '<div></div>',
           replace: true,
           link: function(scope, element, attrs){
 
+            console.log(scope);
+
+            console.log(scope.lat);
+            console.log(scope.lon);
+
             var myLatLng = new google.maps.LatLng(scope.lat, scope.lon);
             
-            console.log(scope);
+            
+            
             var mapOption = {
               center : myLatLng,
               zoom: 2,
