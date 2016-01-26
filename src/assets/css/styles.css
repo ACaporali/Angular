@@ -72,6 +72,10 @@ a:hover {
 .map {
   margin-top: 10px; }
 
+#map-canvas {
+  height: 200px;
+  width: auto; }
+
 header {
   margin-bottom: 40px;
   text-align: center; }

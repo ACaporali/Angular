@@ -5,7 +5,7 @@
 <div ng-controller="checkinDetailsController as checkinDetailCtrl">
   	<div class="detail">
   		<div class="detailImg">
-			<img ng-src="{{checkin.user.picture}}" class="photoCheckinDetail">
+			<img ng-src="{{checkin.user.picture}}" class="photoCheckinDetail" alt="imgCheckin">
 		</div>
 
 		<div class="detailInfo">
@@ -17,7 +17,7 @@
 	  	<div class="meteoInfo">
 		  	<p>		  		
 		  		{{weather.name}} :		  		
-		  		<img src="/images/icons/{{weather.weather[0].icon}}.png" class="meteoImg">
+		  		<img src="/images/icons/{{weather.weather[0].icon}}.png" class="meteoImg" alt="imgWeather">
 		  	</p>
 		  	<p>
 		  		{{weather.main.temp}}°C,
