@@ -21,41 +21,8 @@
   </head>
   <body>
 
-  	<!--<div ng-controller="helloController as helloCtrl">
-        <label>Name:</label>
-        <input type="text" ng-model="yourName" placeholder="Enter a name here">
-        <hr>
-        <h1>Hello {{yourName}}!</h1>
-
-        <p>{{helloCtrl.afficheLongeur(yourName) }}</p>
-
-        <p>{{helloCtrl.inverseChaine(yourName) }}</p>
-
-        <ul>
-        	<li ng-repeat="lettre in helloCtrl.splitToList(yourName) track by $index">{{lettre}}</li>
-        </ul>
-
-        <p>{{helloCtrl.splitToList(yourName) }}</p>
-    </div>
-
-    <div ng-controller="contactController as contactCtrl">
-    	
-     <div ng-repeat="contacts in contactCtrl.contacts track by $index"> 	
-    	<h3 ng-bind='contacts.name'></h3>
-    	<p>{{contacts.phone}}</p>
-    </div>  
-
-    <hr>
-    Recherche : <input type="text" ng-model="recherche">
-
-    <div ng-controller="contactController as contactCtrl">
-    	
-     <div ng-repeat="contacts in contactCtrl.contacts filter : contacts : recherche track by $index"> 	
-    	<h3 ng-bind='contacts.name'></h3>
-    	<p>{{contacts.phone}}</p>
-    </div> -->
-
     <header>
+      <p class="size42">AngularApp</p>
       <p>Ajouter un checkin</p>
 
       <div>
@@ -78,8 +45,6 @@
     </header>
 
     <div class="coprs"ng-view></div>
-
-    <a href="test.html">test.html</a>
 
 
   </body>

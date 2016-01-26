@@ -1,4 +1,4 @@
-<a class="boutonRetour" href="http://localhost:3000/#/">Retour à la liste</a>
+<input type="button" value="Retour à la liste" class="boutonRetour" onClick="window.history.back()">
 <h1>CheckIn Details</h1>
 <hr>
 
@@ -9,10 +9,8 @@
 		</div>
 
 		<div class="detailInfo">
-			<p><u>Numéro :</u> {{checkin.id}}</p>
-		  	<p><u>Prénom, nom :</u> {{checkin.user.name}}</p>
-		  	<p><u>Ville :</u> {{weather.name}}</p>	
-		  	<p><u>Email :</u> {{checkin.user.email}}</p>	
+			<p class="detailInfoNom">{{checkin.user.name}}</p>
+			<p class="detailInfoContenu">Cette personne est le {{checkin.id}} ème checkin ajouté. Habitant la ville de {{weather.name}}, vous pouvez la joindre via l'adresse Email suivante : {{checkin.user.email}}</p>	
 		</div>	  	
 	</div>
 	<div class="meteo"> 	
@@ -26,10 +24,6 @@
 		  		{{weather.weather[0].description}}	  		
 		  	</p>
 		</div>
-	  	<p>
-	  		{{weather.coord.lat}}
-	  		{{weather.coord.lon}}
-	  	</p>
 	  	<div class="map">
 		  	<p>
 		  		<my-maps id="map-canvas" lat="{{weather.coord.lat}}" lon="{{weather.coord.lon}}"></my-maps>

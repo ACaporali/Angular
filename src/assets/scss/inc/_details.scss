@@ -1,0 +1,57 @@
+/*Css des CheckIns detail*/
+.detail{
+	margin-top : 40px;
+	height: auto;
+	width: 100%;
+	overflow: hidden;
+}
+
+.photoCheckinDetail{
+  	max-width: 100%;
+}
+
+.detailImg{
+	float: left;
+	width: 25%;
+}
+
+.detailInfo{
+	float: left;
+	width: 75%;
+}
+
+.detailInfoNom{
+	font-size : 22px;
+	margin-left: 10px;
+}
+
+.detailInfoContenu{
+	margin-top : 10px;
+	margin-bottom : 10px;
+	line-height: 1.5;
+	margin-left: 10px;
+}
+
+.meteo{
+	display: block;
+	margin-top : 20px;
+}
+
+.meteoImg{
+	height: auto;
+  	width: auto;
+}
+
+.meteoInfo{
+	text-align: center;
+}
+
+.map{
+	margin-top : 10px;
+}
+
+
+#map-canvas{
+    height: 200px;
+    width: auto;
+}

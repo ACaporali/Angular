@@ -1,9 +1,10 @@
 <h1>CheckIn List</h1>
+<hr>
 
 <div ng-controller="checkinController as checkinCtrl">
-	<ul>
-		<li ng-repeat ='checkin in checkins'>
-			<a href="#/checkin/{{checkin.id}}">{{checkin.id}}</a>
+	<ul class="ul">
+		<li class="li" ng-repeat ='checkin in checkins'>
+			<a class="a" href="#/checkin/{{checkin.id}}">{{checkin.user.name}}</a>
 		</li>
 	</ul>      
 </div>

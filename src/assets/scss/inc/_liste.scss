@@ -1,0 +1,37 @@
+/*Css de la liste de CheckIns*/
+a{
+	text-decoration:none; 
+	color: #000000;	
+}
+
+a:hover{
+	color: #e1e1e1;
+}
+
+.ul{
+	list-style:none;
+	text-align: center;
+}
+
+
+.li{
+	float: left;
+	width: 20%;
+	margin: 5px;
+	padding: 10px 5px 10px 5px;
+	background-color: #229EE4;
+	margin: 10px;
+}
+
+.boutonRetour{
+	padding: 7px;
+	text-align: center;
+	border-radius: 3px;
+	background: transparent linear-gradient(#42BAFF, #229EE4) repeat scroll 0% 0%;
+}
+
+.boutonRetour:hover{
+	color: #222;
+ 	background: #555;
+ 	background: linear-gradient( #229EE4, #1A73A6);
+}
