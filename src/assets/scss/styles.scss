@@ -27,6 +27,14 @@ hr{
 	margin-bottom: 0px;
 }
 
+.form{
+	min-height: 100%;
+	width: 30%;
+	margin: auto; /* Permet de centrer la div */
+	padding: 30px;
+	display: table;
+}
+
 .coprs{
 	min-height: 100%;
 	background-color: #ffffff;

@@ -18,6 +18,7 @@
 .detailInfo{
 	float: left;
 	width: 75%;
+	text-align: justify;
 }
 
 .detailInfoNom{
@@ -54,4 +55,25 @@
 #map-canvas{
     height: 200px;
     width: auto;
+}
+
+/*Responsive*/
+@media (max-width: 740px) {
+	.detail{
+		text-align: center;
+	}
+
+	.detailImg{
+		float: none;
+	    display: inline-block;  
+	}
+
+	.detailInfo{
+		float: none;
+	    display: inline-block;
+
+	    .detailInfoNom{
+	    	text-align: center;
+	    } 
+	}
 }

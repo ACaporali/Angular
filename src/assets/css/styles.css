@@ -2,10 +2,10 @@
 /*Css de la liste de CheckIns*/
 a {
   text-decoration: none;
-  color: #000000; }
+  color: #000000 !important; }
 
 a:hover {
-  color: #e1e1e1; }
+  color: #e1e1e1 !important; }
 
 .ul {
   list-style: none;
@@ -16,19 +16,17 @@ a:hover {
   width: 20%;
   margin: 5px;
   padding: 10px 5px 10px 5px;
-  background-color: #229EE4;
+  background-color: #26A69A;
   margin: 10px; }
 
-.boutonRetour {
-  padding: 7px;
-  text-align: center;
-  border-radius: 3px;
-  background: transparent linear-gradient(#42BAFF, #229EE4) repeat scroll 0% 0%; }
+/*Responsive*/
+@media (max-width: 740px) {
+  .li {
+    min-height: 64px; } }
 
-.boutonRetour:hover {
-  color: #222;
-  background: #555;
-  background: linear-gradient(#229EE4, #1A73A6); }
+@media (max-width: 550px) {
+  .li {
+    width: 40%; } }
 
 /*Css des CheckIns detail*/
 .detail {
@@ -46,7 +44,8 @@ a:hover {
 
 .detailInfo {
   float: left;
-  width: 75%; }
+  width: 75%;
+  text-align: justify; }
 
 .detailInfoNom {
   font-size: 22px;
@@ -76,6 +75,19 @@ a:hover {
   height: 200px;
   width: auto; }
 
+/*Responsive*/
+@media (max-width: 740px) {
+  .detail {
+    text-align: center; }
+  .detailImg {
+    float: none;
+    display: inline-block; }
+  .detailInfo {
+    float: none;
+    display: inline-block; }
+    .detailInfo .detailInfoNom {
+      text-align: center; } }
+
 header {
   margin-bottom: 40px;
   text-align: center; }
@@ -94,6 +106,14 @@ hr {
 .ng-binding {
   margin-top: 0px;
   margin-bottom: 0px; }
+
+.form {
+  min-height: 100%;
+  width: 30%;
+  margin: auto;
+  /* Permet de centrer la div */
+  padding: 30px;
+  display: table; }
 
 .coprs {
   min-height: 100%;
