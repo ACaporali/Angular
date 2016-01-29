@@ -29,9 +29,9 @@ hr{
 
 .form{
 	min-height: 100%;
-	width: 30%;
+	width: 40%;
 	margin: auto; /* Permet de centrer la div */
-	padding: 30px;
+	padding: 10px;
 	display: table;
 }
 
@@ -46,4 +46,12 @@ hr{
 
 .size42{
 	font-size: 42px;
+}
+
+.margin-top{
+	margin-top: 10px;
+}
+
+.btn {
+    padding: 0px 1rem !important;
 }

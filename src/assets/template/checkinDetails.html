@@ -1,33 +1,33 @@
-<input type="button" value="Retour à la liste" class="btn waves-effect waves-light" onClick="window.history.back()">
-<h1>CheckIn Details</h1>
-<hr>
-
-<div ng-controller="checkinDetailsController as checkinDetailCtrl">
-  	<div class="detail">
-  		<div class="detailImg">
-			<img ng-src="{{checkin.user.picture}}" class="photoCheckinDetail" alt="imgCheckin">
+<div class="row">
+	<input type="button" value="Retour à la liste" class="btn waves-effect waves-light" onClick="window.history.back()">
+	<h1>CheckIn Details</h1>
+	<hr>
+	<div ng-controller="checkinDetailsController as checkinDetailCtrl">
+	  	<div class="detail">
+	  		<div class="detailImg">
+				<img ng-src="{{checkin.user.picture}}" class="photoCheckinDetail" alt="imgCheckin">
+			</div>
+			<div class="detailInfo">
+				<p class="detailInfoNom">{{checkin.user.name}}</p>
+				<p class="detailInfoContenu">Cette personne est le {{checkin.id}} ème checkin ajouté. Habitant la ville de {{weather.name}}, vous pouvez la joindre via l'adresse Email suivante : {{checkin.user.email}}</p>	
+			</div>	  	
 		</div>
-
-		<div class="detailInfo">
-			<p class="detailInfoNom">{{checkin.user.name}}</p>
-			<p class="detailInfoContenu">Cette personne est le {{checkin.id}} ème checkin ajouté. Habitant la ville de {{weather.name}}, vous pouvez la joindre via l'adresse Email suivante : {{checkin.user.email}}</p>	
-		</div>	  	
-	</div>
-	<div class="meteo"> 	
-	  	<div class="meteoInfo">
-		  	<p>		  		
-		  		{{weather.name}} :		  		
-		  		<img src="/images/icons/{{weather.weather[0].icon}}.png" class="meteoImg" alt="imgWeather">
-		  	</p>
-		  	<p>
-		  		{{weather.main.temp}}°C,
-		  		{{weather.weather[0].description}}	  		
-		  	</p>
+		<div class="meteo"> 	
+		  	<div class="meteoInfo">
+			  	<p>		  		
+			  		{{weather.name}} :		  		
+			  		<img src="/images/icons/{{weather.weather[0].icon}}.png" class="meteoImg" alt="imgWeather">
+			  	</p>
+			  	<p>
+			  		{{weather.main.temp}}°C,
+			  		{{weather.weather[0].description}}	  		
+			  	</p>
+			</div>
+		  	<div class="map">
+			  	<p>
+			  		<my-maps id="map-canvas" lat="{{weather.coord.lat}}" lon="{{weather.coord.lon}}"></my-maps>
+			  	</p>
+			</div>
 		</div>
-	  	<div class="map">
-		  	<p>
-		  		<my-maps id="map-canvas" lat="{{weather.coord.lat}}" lon="{{weather.coord.lon}}"></my-maps>
-		  	</p>
-		</div>
-	</div> 	 
+	</div>	
 </div>

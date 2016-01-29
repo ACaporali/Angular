@@ -22,16 +22,13 @@
 		$scope.$on('EvenementRecharge', function(){ //Regarde si le $scope voit la chaine de caratère
 			console.log("evenement EvenementRecharge reçut");
 			getCheckInList();
-		});
-							
+		});							
 	})
 
 	.controller('checkinDetailsController', function($routeParams, $http, $scope, $rootScope){
-
 		$http({
 			method: 'GET',
 			url: 'http://checkin-api.dev.cap-liberte.com/checkin/'+$routeParams.checkinId+''
-
 		}).then(function successCallback(response){
 			console.log($routeParams);
 			console.log(response.data);
@@ -67,14 +64,12 @@
 	        	});	        	
 	        });
 	    } 
-
 	    else { 
 	        //x.innerHTML = "Geolocation is not supported by this browser.";
 	    }					
 
 		$scope.submit = function(){
 			console.log($scope.lat + ' ' + $scope.lng);
-
   			//localStorage (création du tableau dans lequel les coordonnées sont misent en localStorage)
   			var checkIns = localStorageService.get('checkIns');
   			if (checkIns === null){
@@ -85,9 +80,7 @@
   				lat : $scope.lat,
   				lng : $scope.lng
   			}
-
   			checkIns.push(coordonnees);
-
   			localStorageService.set('checkIns', checkIns);
   			$rootScope.$broadcast('localStorageFait');
 			
@@ -116,20 +109,18 @@
 					headers:{
 						'Content-Type': undefined
 					}
-
 				}).then(function successCallback(response){
 					$rootScope.$broadcast('EvenementRecharge');// retourne la chaine de caractère "EvenementRecharge" dans le rootScope (parent de tous les scope)				
 					console.log(response.data);
 					$scope.checkins = response.data;
-					localStorageService.remove('checkIns');
+					localStorageService.remove('checkIns');					
+				    var $toastContent = $('<span>Synchronisation faite !</span>');
+				    Materialize.toast($toastContent, 5000);
+        
 				}, function errorCallback(response){
 					console.log(response);
 				});
-
-			};
-					
+			};					
 		};			
 	});
-		
-
 })(window.angular);
