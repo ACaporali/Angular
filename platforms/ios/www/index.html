@@ -2,74 +2,57 @@
 <html ng-app='myApp'>
   <head>
   	<title>Angular</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!-- build:css css/css-combined.css -->
+    <link rel="stylesheet" href="assets/css/styles.css" media="screen" title="no title">
+    <link type="text/css" rel="stylesheet" href="assets/css/materialize-src/sass/materialize.css"  media="screen,projection"/>
+    <!-- endbuild -->
+    
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <script type="text/javascript" src="cordova.js"></script>
-    <script src="assets/js/combined.js"></script>
+    
+    <script src="//maps.googleapis.com/maps/api/js?sensor=false"></script>    
+
+    <!-- build:js assets/js/combined.js -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="assets/js/materialize/materialize.min.js"></script>
+  	<script src="lib/angular/angular.js"></script>
+    <script src="lib/angular-route/angular-route.js"></script>
+  	<script type="text/javascript" src="assets/js/controllers/hello.js"></script>
+  	<script type="text/javascript" src="assets/js/controllers/contact.js"></script>
+    <script type="text/javascript" src="assets/js/controllers/checkin.js"></script>
+  	<script type="text/javascript" src="assets/js/app.js"></script>
+    <script type="text/javascript" src="assets/js/angular-local-storage.js"></script>
+    <!-- endbuild -->
   </head>
   <body>
+    <div class="row">
+      <div class="col s12">
+        <header>
+          <p class="size42">AngularApp</p>
+          <p>Ajouter un checkin</p>
 
-  	<!--<div ng-controller="helloController as helloCtrl">
-        <label>Name:</label>
-        <input type="text" ng-model="yourName" placeholder="Enter a name here">
-        <hr>
-        <h1>Hello {{yourName}}!</h1>
+          <div class="form">
+            <form ng-submit="submit()" ng-controller="checkinFormController">
+              <input type="text" name="lat" id="coordLat" ng-model="lat" value="" placeholder="latitude"/><!-- ng-model="lat" corespond à $scope.lat dans checkinFormController -->
+              <input type="text" name="lng" id="coordLng" ng-model="lng" value="" placeholder="longitude"/><!-- ng-model="lng" corespond à $scope.lng dans checkinFormController -->             
+              <button class="btn waves-effect waves-light ajouter" type="submit" name="submit">Ajouter
+                <i class="material-icons right">send</i>
+              </button>
+            </form>  
 
-        <p>{{helloCtrl.afficheLongeur(yourName) }}</p>
+            <div ng-controller="SynchroController" class="margin-top sychroniser">            
+              <button class="btn waves-effect waves-light" type="submit" name="synchro" ng-click ="synchro()">Synchroniser
+                <i class="material-icons right">loop</i>
+              </button>
+              <p>{{nbSynchro}}</p>
+            </div>
+          </div>
+        </div>
+        </header>
 
-        <p>{{helloCtrl.inverseChaine(yourName) }}</p>
-
-        <ul>
-        	<li ng-repeat="lettre in helloCtrl.splitToList(yourName) track by $index">{{lettre}}</li>
-        </ul>
-
-        <p>{{helloCtrl.splitToList(yourName) }}</p>
+        <div class="coprs"ng-view></div>
     </div>
-
-    <div ng-controller="contactController as contactCtrl">
-    	
-     <div ng-repeat="contacts in contactCtrl.contacts track by $index"> 	
-    	<h3 ng-bind='contacts.name'></h3>
-    	<p>{{contacts.phone}}</p>
-    </div>  
-
-    <hr>
-    Recherche : <input type="text" ng-model="recherche">
-
-    <div ng-controller="contactController as contactCtrl">
-    	
-     <div ng-repeat="contacts in contactCtrl.contacts filter : contacts : recherche track by $index"> 	
-    	<h3 ng-bind='contacts.name'></h3>
-    	<p>{{contacts.phone}}</p>
-    </div> -->
-
-    <header>
-      <a href>Ajouter un checkin</a>
-
-      <div>
-
-        <form ng-submit="submit()" ng-controller="checkinFormController">
-          <input type="text" name="lat" id="coordLat" ng-model="lat" value="" placeholder="latitude"/>
-          <input type="text" name="lng" id="coordLng" ng-model="lng" value="" placeholder="longitude"/>
-          <input type="submit" name="submit" value="Ajouter"/>
-        </form>
-      
-        
-      </div>
-
-
-
-    </header>
-
-    <div ng-view></div>
-    
-
-   
-        
-
-
-
-
-
-
   </body>
 </html>
