@@ -87,6 +87,31 @@
 		};			
 	})
 
+	.controller('loginController', function($scope, $auth){		
+		console.log('LOGIN CONTROLLER');		
+		$scope.loginSubmit = function(user){			
+			console.log(user);			
+			console.log('passe dans le loginController');			
+			//email : demo@demo.com
+			//mdp: demo			
+						
+			var user = {  				
+				email: $scope.email,  				
+				email: $scope.email,  				
+				password: $scope.password			
+			};
+			 			
+			$auth.login(user).then(function(response) { 					
+				$authProvider(user);    			
+				// Redirect user here after a successful log in.  
+				console.log("connection réussite");	
+			}).catch(function(response) {    			
+				// Handle errors here, such as displaying a notification     			
+				// for invalid email and/or password.   			
+			});		
+		};	
+	})
+
 	.controller('SynchroController', function($rootScope, $scope, $http, localStorageService, $routeParams){
 		$scope.$on('localStorageFait', function(){
 			console.log("evenement localStorageFait reçut");

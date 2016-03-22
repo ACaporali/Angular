@@ -2,7 +2,7 @@
 	'use strict';
 
 	var myApp = angular.module('myApp',[
-		'ngRoute', 'LocalStorageModule',
+		'ngRoute', 'LocalStorageModule', 'satellizer',
 		'helloModule','contactModule','checkinModule'
 	])
 
@@ -16,7 +16,21 @@
 			templateUrl: 'assets/template/checkinDetails.html',
 			// controller: 'checkinDetailsController'
 		});
-	});
+	}).config(function($authProvider) {      
+    $authProvider.httpInterceptor = function() {return true; },          
+    $authProvider.withCredentials = true;          
+    $authProvider.tokenRoot = null;          
+    $authProvider.cordova = false;          
+    $authProvider.baseUrl = '/auth';          
+    $authProvider.loginUrl = '/auth/login';         
+    $authProvider.signupUrl = '/auth/signup';          
+    $authProvider.unlinkUrl = '/auth/unlink/';          
+    $authProvider.tokenName = 'token';          
+    $authProvider.tokenPrefix = 'satellizer';         
+    $authProvider.authHeader = 'Authorization';          
+    $authProvider.authToken = 'Bearer';          
+    $authProvider.storageType = 'localStorage';        
+  });    
 
 	myApp.directive('myMaps', function(){
         return{
