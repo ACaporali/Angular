@@ -2,7 +2,7 @@
 	'use strict';
 
 	var myApp = angular.module('myApp',[
-		'ngRoute', 'LocalStorageModule', 'satellizer',
+		'ngRoute', 'satellizer','LocalStorageModule',
 		'helloModule','contactModule','checkinModule'
 	])
 
@@ -16,7 +16,9 @@
 			templateUrl: 'assets/template/checkinDetails.html',
 			// controller: 'checkinDetailsController'
 		});
-	}).config(function($authProvider) {      
+	})
+
+  .config(function($authProvider) {      
     $authProvider.httpInterceptor = function() {return true; },          
     $authProvider.withCredentials = true;          
     $authProvider.tokenRoot = null;          

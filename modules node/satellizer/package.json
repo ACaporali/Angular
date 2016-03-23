@@ -60,7 +60,7 @@
   "gitHead": "56ead50881873dd40aaf82ad2701d9c412c32d27",
   "_id": "satellizer@0.14.0",
   "_shasum": "a08657e39713b48bf7754fd2f705394bbc971d7e",
-  "_from": "satellizer@*",
+  "_from": "satellizer@>=0.14.0 <0.15.0",
   "_npmVersion": "3.6.0",
   "_nodeVersion": "5.6.0",
   "_npmUser": {
@@ -82,5 +82,6 @@
     "tmp": "tmp/satellizer-0.14.0.tgz_1456253773375_0.16997054452076554"
   },
   "directories": {},
-  "_resolved": "https://registry.npmjs.org/satellizer/-/satellizer-0.14.0.tgz"
+  "_resolved": "https://registry.npmjs.org/satellizer/-/satellizer-0.14.0.tgz",
+  "readme": "ERROR: No README data found!"
 }
