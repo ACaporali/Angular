@@ -87,25 +87,25 @@
 		};			
 	})
 
-	.controller('loginController', function($scope, $auth){		
-		console.log('LOGIN CONTROLLER');		
-		$scope.loginSubmit = function(user){			
-			console.log(user);			
+	.controller('loginController', function($scope, $auth){			
+		$scope.loginSubmit = function(){			
 			console.log('passe dans le loginController');			
 			//email : demo@demo.com
 			//mdp: demo			
 						
 			var user = {  				
-				email: $scope.email,  				
-				email: $scope.email,  				
+				email: $scope.email,  				  				
 				password: $scope.password			
 			};
-			 			
-			$auth.login(user).then(function(response) { 					
-				$authProvider(user);    			
+			 					console.log(user);			
+	
+			$auth.login(user).then(function(response) { 	
+				console.log(response);				
 				// Redirect user here after a successful log in.  
-				console.log("connection réussite");	
-			}).catch(function(response) {    			
+				console.log("connexion réussite");
+			}).catch(function(response) {
+				console.log("Erreur connexion"); 
+				console.log($scope.password);			
 				// Handle errors here, such as displaying a notification     			
 				// for invalid email and/or password.   			
 			});		

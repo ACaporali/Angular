@@ -11,7 +11,12 @@
 		$routeProvider
 		.when('/',{
 			templateUrl: 'assets/template/checkinList.html',
+      controller: 'checkinController'
 			})
+    .when('/auth',{
+      templateUrl: 'assets/template/login.html',
+      controller: 'loginController'
+      })
 		.when('/checkin/:checkinId',{
 			templateUrl: 'assets/template/checkinDetails.html',
 			// controller: 'checkinDetailsController'
@@ -20,11 +25,11 @@
 
   .config(function($authProvider) {      
     $authProvider.httpInterceptor = function() {return true; },          
-    $authProvider.withCredentials = true;          
+    $authProvider.withCredentials = false;          
     $authProvider.tokenRoot = null;          
     $authProvider.cordova = false;          
-    $authProvider.baseUrl = '/auth';          
-    $authProvider.loginUrl = '/auth/login';         
+    $authProvider.baseUrl = 'http://checkin-api.dev.cap-liberte.com/';          
+    $authProvider.loginUrl = '/auth';         
     $authProvider.signupUrl = '/auth/signup';          
     $authProvider.unlinkUrl = '/auth/unlink/';          
     $authProvider.tokenName = 'token';          
