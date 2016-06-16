@@ -17,18 +17,17 @@ a:hover{
 .li{
 	float: left;
 	width: 20%;
-	margin: 5px;
-	padding: 10px 5px 10px 5px;
+	padding: 10px 5px;
 	background-color: #26A69A;
 	margin: 10px;
 }
 
 /*Responsive*/
-@media (max-width: 740px) {
+/*@media (max-width: 740px) {
 	.li{
 		min-height: 64px;
 	}
-}
+}*/
 
 @media (max-width: 550px) {
 	.li{

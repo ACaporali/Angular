@@ -54,7 +54,7 @@
 	})
 
 		
-	.controller('checkinFormController', function($rootScope, $scope, $http, localStorageService, $routeParams){		
+	.controller('checkinFormController', function($rootScope, $scope, $http, localStorageService, $routeParams, $base64){		
 		if (navigator.geolocation) {
 	        navigator.geolocation.getCurrentPosition(function(position){
 	        	console.log(position); // Objet position retourné par getCurrentPosition
@@ -69,7 +69,10 @@
 	    }					
 
 		$scope.submit = function(){
+			localStorage.clear();
 			console.log($scope.lat + ' ' + $scope.lng);
+			$scope.imageConvert64=$base64.encode($scope.image);
+			console.log($scope.imageConvert64);
   			//localStorage (création du tableau dans lequel les coordonnées sont misent en localStorage)
   			var checkIns = localStorageService.get('checkIns');
   			if (checkIns === null){
@@ -78,7 +81,7 @@
 
   			var coordonnees = {
   				lat : $scope.lat,
-  				lng : $scope.lng
+  				lng : $scope.lng 
   			}
   			checkIns.push(coordonnees);
   			localStorageService.set('checkIns', checkIns);
@@ -97,15 +100,19 @@
 				email: $scope.email,  				  				
 				password: $scope.password			
 			};
-			 					console.log(user);			
+			console.log(user);			
 	
 			$auth.login(user).then(function(response) { 	
 				console.log(response);				
 				// Redirect user here after a successful log in.  
 				console.log("connexion réussite");
+				window.location.assign("/#/");
+				var $toastContent = $('<span>Connexion faite !</span>');
+				Materialize.toast($toastContent, 5000);
 			}).catch(function(response) {
-				console.log("Erreur connexion"); 
-				console.log($scope.password);			
+				console.log("Erreur connexion"); 	
+				var $toastContent = $('<span>Erreur de connexion !</span>');
+				Materialize.toast($toastContent, 5000);	
 				// Handle errors here, such as displaying a notification     			
 				// for invalid email and/or password.   			
 			});		
@@ -123,7 +130,9 @@
 		$scope.synchro = function(){
 			console.log('ici');
 			var checkIns = localStorageService.get('checkIns');
-			for (var i = 0; i <= checkIns.length; i++) {
+			for (var i = 0; i < checkIns.length; i++) {
+				console.log(checkIns.length);
+				console.log(checkIns[i]);
 				$http({
 					method: 'POST',
 					url: 'http://checkin-api.dev.cap-liberte.com/checkin',

@@ -13,12 +13,6 @@ gulp.task('serve', ['sass'], function() {
     gulp.watch("./src/*.html").on('change', browserSync.reload);
 });
 
-gulp.task('copy-angular-templates', function(done){
-	gulp.src(['src/assets/template/**/*'])
-		.pipe(gulp.dest('www/assets/template/'))
-		.on('end', done);
-});
-
 // creation d'une nouvelle tache : 'sass' qui convertie les fichier scss en css
 gulp.task('sass', function () {
   // convertit un fichier .scss en .css
@@ -28,7 +22,7 @@ gulp.task('sass', function () {
     .pipe(browserSync.stream());// synchronise les modifications comme browserSync.reload mais ne recharge pas la page (comme de l'ajax)
 });
 
-// fonction qui met dans le répertoire 'www' les fichier .html situé dans 'src'
+// fonction qui met dans le répertoire 'cordova/www' les fichier .html situé dans 'src'
 gulp.task('useref', function () {
     var assets = useref.assets();
  
@@ -36,5 +30,17 @@ gulp.task('useref', function () {
         .pipe(assets)
         .pipe(assets.restore())
         .pipe(useref())
-        .pipe(gulp.dest('www'));
+        .pipe(gulp.dest('cordova/www'));
+});
+
+gulp.task('copy-angular-templates', function(done){
+    gulp.src(['src/assets/template/**/*'])
+        .pipe(gulp.dest('cordova/www/assets/template/'))
+        .on('end', done);
+});
+
+gulp.task('copy-angular-css', function(done){
+    gulp.src(['src/assets/css/*.css'])
+        .pipe(gulp.dest('cordova/www/css'))
+        .on('end', done);
 });

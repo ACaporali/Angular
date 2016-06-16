@@ -21,7 +21,6 @@ hr{
 	background-color: #000000;
 }
 
-
 .ng-binding{
 	margin-top : 0px;
 	margin-bottom: 0px;
@@ -54,4 +53,18 @@ hr{
 
 .btn {
     padding: 0px 1rem !important;
+}
+
+
+/*Responsive*/
+@media (max-width: 740px) {
+	.coprs{
+		width: 100%;
+	}
+}
+
+@media (max-width: 550px) {
+	.form{
+		width: 100%;
+	}
 }

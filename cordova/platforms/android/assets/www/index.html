@@ -1,0 +1,68 @@
+<!doctype html>
+<html ng-app='myApp'>
+  <head>
+  	<title>Angular</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="css/css-combined.css">
+    
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <script src="lib/ngCordova/dist/ng-cordova.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
+    
+    <script src="//maps.googleapis.com/maps/api/js?sensor=false"></script>    
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="assets/js/combined.js"></script>
+  </head>
+  <body>
+    <div class="row">
+      <div class="col s12">
+
+          <header>
+            <a href="#/auth">Connexion</a>
+            <p class="size42">AngularApp</p>
+            <p>Ajouter un checkin</p>
+
+            <div class="form">
+              <form ng-submit="submit()" ng-controller="checkinFormController">
+                <input type="text" name="lat" id="coordLat" ng-model="lat" value="" placeholder="latitude"/><!-- ng-model="lat" corespond à $scope.lat dans checkinFormController -->
+                <input type="text" name="lng" id="coordLng" ng-model="lng" value="" placeholder="longitude"/><!-- ng-model="lng" corespond à $scope.lng dans checkinFormController -->
+                <input type="file" name="image" ng-model="image">
+
+                <ion-view view-title="Dashboard">
+                <ion-content class="padding">
+                 <button class="button icon-left ion-ios-camera button-block button-positive" ng-click="tackPicture()">
+                    OPEN CAMERA
+                 </button>
+                   <div class="item item-avatar">
+                  <img ng-src="{{ imgUrl }}">
+                 
+                  <p>{{ dataImg }}</p>
+                </div>
+                </ion-content>
+              </ion-view>
+
+                <button class="btn waves-effect waves-light ajouter" type="submit" name="submit">Ajouter
+                  <i class="material-icons right">send</i>
+                </button>
+              </form>  
+
+              <div ng-controller="SynchroController" class="margin-top sychroniser">            
+                <button class="btn waves-effect waves-light" type="submit" name="synchro" ng-click ="synchro()">Synchroniser
+                  <i class="material-icons right">loop</i>
+                </button>
+                <p>{{nbSynchro}}</p>
+              </div>
+            </div>
+          </div>
+          </header>
+
+
+
+          <div class="coprs" ng-view></div>
+
+      </div>
+    </div>
+  </body>
+</html>

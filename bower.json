@@ -21,6 +21,8 @@
     "Materialize": "materialize#^0.97.5",
     "satellizer": "^0.14.0",
     "angular-local-storage": "^0.2.7",
-    "angular-route": "^1.5.3"
+    "angular-route": "^1.5.3",
+    "angular-base64": "^2.0.5",
+    "ngCordova": "^0.1.26-alpha"
   }
 }
