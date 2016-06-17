@@ -3,7 +3,7 @@
 
 	var myApp = angular.module('myApp',[
 		'ngRoute', 'satellizer','LocalStorageModule',
-		'helloModule','contactModule','checkinModule','base64'
+		'helloModule','contactModule','checkinModule','base64','ngCordova'
 	])
 
 	

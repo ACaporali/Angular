@@ -15,8 +15,8 @@
     
     <script src="//maps.googleapis.com/maps/api/js?sensor=false"></script>    
 
-    <!-- build:js assets/js/combined.js -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <!-- build:js assets/js/combined.js -->
   	<script src="lib/angular/angular.js"></script>
     <script src="lib/angular-route/angular-route.js"></script>
     <script src="lib/satellizer/satellizer.js"></script>
@@ -45,18 +45,9 @@
                 <input type="text" name="lng" id="coordLng" ng-model="lng" value="" placeholder="longitude"/><!-- ng-model="lng" corespond à $scope.lng dans checkinFormController -->
                 <input type="file" name="image" ng-model="image">
 
-                <ion-view view-title="Dashboard">
-                <ion-content class="padding">
-                 <button class="button icon-left ion-ios-camera button-block button-positive" ng-click="tackPicture()">
+                 <button class="" ng-click="tackPicture()">
                     OPEN CAMERA
                  </button>
-                   <div class="item item-avatar">
-                  <img ng-src="{{ imgUrl }}">
-                 
-                  <p>{{ dataImg }}</p>
-                </div>
-                </ion-content>
-              </ion-view>
 
                 <button class="btn waves-effect waves-light ajouter" type="submit" name="submit">Ajouter
                   <i class="material-icons right">send</i>

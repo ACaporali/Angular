@@ -54,7 +54,7 @@
 	})
 
 		
-	.controller('checkinFormController', function($rootScope, $scope, $http, localStorageService, $routeParams, $base64){		
+	.controller('checkinFormController', function($rootScope, $scope, $http, localStorageService, $routeParams, $base64, $cordovaCamera){		
 		if (navigator.geolocation) {
 	        navigator.geolocation.getCurrentPosition(function(position){
 	        	console.log(position); // Objet position retourné par getCurrentPosition
@@ -66,7 +66,33 @@
 	    } 
 	    else { 
 	        //x.innerHTML = "Geolocation is not supported by this browser.";
-	    }					
+	        alert('Geolocation is not supported by this browser.');
+	    }
+
+	    document.addEventListener("deviceready", function () {
+		    $scope.tackPicture = function() {
+		    	var options = {
+				quality: 50,
+				destinationType: Camera.DestinationType.DATA_URL,
+				sourceType: Camera.PictureSourceType.CAMERA,
+				allowEdit: true,
+				encodingType: Camera.EncodingType.JPEG,
+				targetWidth: 100,
+				targetHeight: 100,
+				popoverOptions: CameraPopoverOptions,
+				saveToPhotoAlbum: false,
+				correctOrientation:true
+				};
+
+				$cordovaCamera.getPicture(options).then(function(imageData) {
+					//var image = document.getElementById('myImage');
+					$scope.imgabc = "data:image/jpeg;base64," + imageData;
+					console.log($scope.imgabc);
+					}, function(err) {
+						alert('Error taking picture', 'Error');
+					});
+		    }
+		}, false);				
 
 		$scope.submit = function(){
 			localStorage.clear();
