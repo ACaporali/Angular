@@ -2,19 +2,39 @@
 	'use strict';
 
 	angular.module('checkinModule',['LocalStorageModule'])
-	.controller('checkinController', function($scope, $http){
+	.controller('checkinController', function($scope, $http, localStorageService){
 		var getCheckInList = function(){
 			$http({
 				method: 'GET',
 				url: 'http://checkin-api.dev.cap-liberte.com/checkin'
 
-			}).then(function successCallback(response){
-				console.log(response.data);
+			}).then(function successCallback(response){				
 				$scope.checkins = response.data;
+				console.log($scope.checkins);
+				console.log($scope.checkins.length);
+
+				console.log($scope.checkins.length);
+				var checkInList = localStorageService.get('checkInList');
+	  			if (checkInList === null){
+	  				checkInList = [];
+	  			}
+
+	  			for (var i = 0; i < $scope.checkins.length; i++) {
+
+	  			var elements = {
+	  				img : $scope.checkins[i].user.picture,
+	  				name : $scope.checkins[i].user.name,
+	  				weather : $scope.checkins[i].weather
+	  			}
+	  			checkInList.push(elements);
+
+	  			};
+	  			localStorageService.set('checkInList', checkInList);
+
 			}, function errorCallback(response){
 				console.log(response);
-			});
-
+				console.log('non');
+			});			
 		};
 
 		getCheckInList();	
@@ -54,7 +74,7 @@
 	})
 
 		
-	.controller('checkinFormController', function($rootScope, $scope, $http, localStorageService, $routeParams, $base64, $cordovaCamera){		
+	.controller('checkinFormController', function($rootScope, $scope, $http, localStorageService, $routeParams, $base64){		
 		if (navigator.geolocation) {
 	        navigator.geolocation.getCurrentPosition(function(position){
 	        	console.log(position); // Objet position retourné par getCurrentPosition
@@ -71,34 +91,26 @@
 
 	    document.addEventListener("deviceready", function () {
 		    $scope.tackPicture = function() {
-		    	var options = {
-				quality: 50,
-				destinationType: Camera.DestinationType.DATA_URL,
-				sourceType: Camera.PictureSourceType.CAMERA,
-				allowEdit: true,
-				encodingType: Camera.EncodingType.JPEG,
-				targetWidth: 100,
-				targetHeight: 100,
-				popoverOptions: CameraPopoverOptions,
-				saveToPhotoAlbum: false,
-				correctOrientation:true
-				};
+		    	navigator.camera.getPicture(onSuccess, onFail, { quality: 25,
+    			destinationType: Camera.DestinationType.DATA_URL
+				});
 
-				$cordovaCamera.getPicture(options).then(function(imageData) {
-					//var image = document.getElementById('myImage');
-					$scope.imgabc = "data:image/jpeg;base64," + imageData;
-					console.log($scope.imgabc);
-					}, function(err) {
-						alert('Error taking picture', 'Error');
-					});
+				function onSuccess(imageData) {
+					console.log('lulu');
+				    var image = document.getElementById('myImage');
+				    image.src = "data:image/jpeg;base64," + imageData;
+				    console.log(image.src);
+				}
+
+				function onFail(message) {
+				    alert('Failed because: ' + message);
+				}
 		    }
 		}, false);				
 
 		$scope.submit = function(){
 			localStorage.clear();
 			console.log($scope.lat + ' ' + $scope.lng);
-			$scope.imageConvert64=$base64.encode($scope.image);
-			console.log($scope.imageConvert64);
   			//localStorage (création du tableau dans lequel les coordonnées sont misent en localStorage)
   			var checkIns = localStorageService.get('checkIns');
   			if (checkIns === null){
@@ -117,8 +129,7 @@
 	})
 
 	.controller('loginController', function($scope, $auth){			
-		$scope.loginSubmit = function(){			
-			console.log('passe dans le loginController');			
+		$scope.loginSubmit = function(){						
 			//email : demo@demo.com
 			//mdp: demo			
 						
@@ -157,8 +168,6 @@
 			console.log('ici');
 			var checkIns = localStorageService.get('checkIns');
 			for (var i = 0; i < checkIns.length; i++) {
-				console.log(checkIns.length);
-				console.log(checkIns[i]);
 				$http({
 					method: 'POST',
 					url: 'http://checkin-api.dev.cap-liberte.com/checkin',

@@ -3,7 +3,7 @@
 
 	var myApp = angular.module('myApp',[
 		'ngRoute', 'satellizer','LocalStorageModule',
-		'helloModule','contactModule','checkinModule','base64','ngCordova'
+		'helloModule','contactModule','checkinModule','base64'
 	])
 
 	
@@ -50,7 +50,7 @@
           replace: true,
           link: function(scope, element, attrs){
             //scope.$watch permet de voir si lat change. 
-            //Le html s'execute avant la requete que renvoie lat et lon (openweathermap dans checkinDetailsController) donc lat et lon (dans la html) sont null 
+            //Le html s'execute avant la requete que renvoie lat et lon (openweathermap dans checkinDetailsController) donc lat et lon (dans le html) sont null 
             //Si c'est la cas, appel de la fonction map();
             scope.$watch('lat', function() {
               map();

@@ -3,7 +3,10 @@
 <div ng-controller="checkinController as checkinCtrl" class="row">
 	<ul class="ul">
 		<li class="li z-depth-2" ng-repeat ='checkin in checkins'>
+			<a class="a" href="#/checkin/{{checkin.id}}"><img height="auto" width="100%" src="{{checkin.user.picture}}"></a>
 			<a class="a" href="#/checkin/{{checkin.id}}">{{checkin.user.name}}</a>
+			<p ng-hide="{{checkin.weather}} == null">{{checkin.weather}}</p>
+			<p ng-hide="!({{checkin.weather}}) == null">pas de weather</p>
 		</li>
 	</ul>      
 </div>

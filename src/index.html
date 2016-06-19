@@ -43,9 +43,8 @@
               <form ng-submit="submit()" ng-controller="checkinFormController">
                 <input type="text" name="lat" id="coordLat" ng-model="lat" value="" placeholder="latitude"/><!-- ng-model="lat" corespond à $scope.lat dans checkinFormController -->
                 <input type="text" name="lng" id="coordLng" ng-model="lng" value="" placeholder="longitude"/><!-- ng-model="lng" corespond à $scope.lng dans checkinFormController -->
-                <input type="file" name="image" ng-model="image">
 
-                 <button class="" ng-click="tackPicture()">
+                 <button class="" ng-click="tackPicture()" id="myImage">
                     OPEN CAMERA
                  </button>
 

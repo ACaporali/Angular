@@ -40207,7 +40207,6 @@ Picker.extend( 'pickadate', DatePicker )
 			}, function errorCallback(response){
 				console.log(response);
 			});
-
 		};
 
 		getCheckInList();	
@@ -40259,13 +40258,31 @@ Picker.extend( 'pickadate', DatePicker )
 	    } 
 	    else { 
 	        //x.innerHTML = "Geolocation is not supported by this browser.";
-	    }					
+	        alert('Geolocation is not supported by this browser.');
+	    }
+
+	    document.addEventListener("deviceready", function () {
+		    $scope.tackPicture = function() {
+		    	navigator.camera.getPicture(onSuccess, onFail, { quality: 25,
+    			destinationType: Camera.DestinationType.DATA_URL
+				});
+
+				function onSuccess(imageData) {
+					console.log('lulu');
+				    var image = document.getElementById('myImage');
+				    image.src = "data:image/jpeg;base64," + imageData;
+				    console.log(image.src);
+				}
+
+				function onFail(message) {
+				    alert('Failed because: ' + message);
+				}
+		    }
+		}, false);				
 
 		$scope.submit = function(){
 			localStorage.clear();
 			console.log($scope.lat + ' ' + $scope.lng);
-			$scope.imageConvert64=$base64.encode($scope.image);
-			console.log($scope.imageConvert64);
   			//localStorage (création du tableau dans lequel les coordonnées sont misent en localStorage)
   			var checkIns = localStorageService.get('checkIns');
   			if (checkIns === null){
@@ -40324,8 +40341,6 @@ Picker.extend( 'pickadate', DatePicker )
 			console.log('ici');
 			var checkIns = localStorageService.get('checkIns');
 			for (var i = 0; i < checkIns.length; i++) {
-				console.log(checkIns.length);
-				console.log(checkIns[i]);
 				$http({
 					method: 'POST',
 					url: 'http://checkin-api.dev.cap-liberte.com/checkin',
