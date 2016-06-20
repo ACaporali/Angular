@@ -1,6 +1,7 @@
 /*Import*/
 @import "inc/liste";
 @import "inc/details";
+@import "inc/variables";
 
 header{
 	margin-bottom : 40px;
@@ -43,8 +44,8 @@ hr{
 	display: table;
 }
 
-.size42{
-	font-size: 42px;
+.nav-wrapper{
+	background-color : $blue;
 }
 
 .margin-top{

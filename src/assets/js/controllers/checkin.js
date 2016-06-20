@@ -15,14 +15,13 @@
 
 				console.log($scope.checkins.length);
 				var checkInList = localStorageService.get('checkInList');
-	  			if (checkInList === null){
-	  				checkInList = [];
-	  			}
+	  			checkInList = [];
 
 	  			for (var i = 0; i < $scope.checkins.length; i++) {
 
 	  			var elements = {
-	  				img : $scope.checkins[i].user.picture,
+	  				id : $scope.checkins[i].id,
+	  				picture : $scope.checkins[i].user.picture,
 	  				name : $scope.checkins[i].user.name,
 	  				weather : $scope.checkins[i].weather
 	  			}
@@ -34,6 +33,37 @@
 			}, function errorCallback(response){
 				console.log(response);
 				console.log('non');
+				var checkInList = localStorageService.get('checkInList');
+				console.log(checkInList);
+
+				//Déclare du tbl final
+				var tbl = [];
+				
+
+				for (var i = 0; i < checkInList.length; i++) {
+					//Déclare les différentes variables
+					var checkins = {};
+					var user = {};
+					var weather = "";
+					var id = 0;
+
+					//Met dans user les éléments
+					id = checkInList[i].id;					
+					user.picture = '../../images/user.jpg';
+					user.name = checkInList[i].name;
+					weather = checkInList[i].weather;
+
+					//Met user et weather dans checkins
+					checkins.id = id;
+					checkins.user = user;
+					checkins.weather = weather;
+					
+					//Met checkins dans tbl qui deviendra $scope.checkins par la suite
+					tbl.push(checkins);
+				};
+				
+				$scope.checkins = tbl;
+				console.log($scope.checkins);
 			});			
 		};
 
@@ -136,8 +166,7 @@
 			var user = {  				
 				email: $scope.email,  				  				
 				password: $scope.password			
-			};
-			console.log(user);			
+			};		
 	
 			$auth.login(user).then(function(response) { 	
 				console.log(response);				

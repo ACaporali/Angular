@@ -40195,18 +40195,70 @@ Picker.extend( 'pickadate', DatePicker )
 	'use strict';
 
 	angular.module('checkinModule',['LocalStorageModule'])
-	.controller('checkinController', function($scope, $http){
+	.controller('checkinController', function($scope, $http, localStorageService){
 		var getCheckInList = function(){
 			$http({
 				method: 'GET',
 				url: 'http://checkin-api.dev.cap-liberte.com/checkin'
 
-			}).then(function successCallback(response){
-				console.log(response.data);
+			}).then(function successCallback(response){				
 				$scope.checkins = response.data;
+				console.log($scope.checkins);
+				console.log($scope.checkins.length);
+
+				console.log($scope.checkins.length);
+				var checkInList = localStorageService.get('checkInList');
+	  			checkInList = [];
+
+	  			for (var i = 0; i < $scope.checkins.length; i++) {
+
+	  			var elements = {
+	  				id : $scope.checkins[i].id,
+	  				picture : $scope.checkins[i].user.picture,
+	  				name : $scope.checkins[i].user.name,
+	  				weather : $scope.checkins[i].weather
+	  			}
+	  			checkInList.push(elements);
+
+	  			};
+	  			localStorageService.set('checkInList', checkInList);
+
 			}, function errorCallback(response){
 				console.log(response);
-			});
+				console.log('non');
+				var checkInList = localStorageService.get('checkInList');
+				console.log(checkInList);
+
+				//Déclare du tbl final
+				var tbl = [];
+				
+
+				for (var i = 0; i < checkInList.length; i++) {
+					//Déclare les différentes variables
+					var checkins = {};
+					var user = {};
+					var weather = "";
+					var id = 0;
+
+					//Met dans user les éléments
+					id = checkInList[i].id;					
+					user.picture = '../../images/user.jpg';
+					user.name = checkInList[i].name;
+					weather = checkInList[i].weather;
+
+					//Met user et weather dans checkins
+					checkins.id = id;
+					checkins.user = user;
+					checkins.weather = weather;
+					
+					//Met checkins dans tbl qui deviendra $scope.checkins par la suite
+					tbl.push(checkins);
+					console.log(tbl);
+				};
+				
+				$scope.checkins = tbl;
+				console.log($scope.checkins);
+			});			
 		};
 
 		getCheckInList();	
@@ -40301,16 +40353,14 @@ Picker.extend( 'pickadate', DatePicker )
 	})
 
 	.controller('loginController', function($scope, $auth){			
-		$scope.loginSubmit = function(){			
-			console.log('passe dans le loginController');			
+		$scope.loginSubmit = function(){						
 			//email : demo@demo.com
 			//mdp: demo			
 						
 			var user = {  				
 				email: $scope.email,  				  				
 				password: $scope.password			
-			};
-			console.log(user);			
+			};		
 	
 			$auth.login(user).then(function(response) { 	
 				console.log(response);				
@@ -40418,7 +40468,7 @@ Picker.extend( 'pickadate', DatePicker )
           replace: true,
           link: function(scope, element, attrs){
             //scope.$watch permet de voir si lat change. 
-            //Le html s'execute avant la requete que renvoie lat et lon (openweathermap dans checkinDetailsController) donc lat et lon (dans la html) sont null 
+            //Le html s'execute avant la requete que renvoie lat et lon (openweathermap dans checkinDetailsController) donc lat et lon (dans le html) sont null 
             //Si c'est la cas, appel de la fonction map();
             scope.$watch('lat', function() {
               map();
