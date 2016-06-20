@@ -40253,7 +40253,6 @@ Picker.extend( 'pickadate', DatePicker )
 					
 					//Met checkins dans tbl qui deviendra $scope.checkins par la suite
 					tbl.push(checkins);
-					console.log(tbl);
 				};
 				
 				$scope.checkins = tbl;
