@@ -11,9 +11,7 @@
 			}).then(function successCallback(response){				
 				$scope.checkins = response.data;
 				console.log($scope.checkins);
-				console.log($scope.checkins.length);
 
-				console.log($scope.checkins.length);
 				var checkInList = localStorageService.get('checkInList');
 	  			checkInList = [];
 
@@ -111,8 +109,25 @@
 	        	$scope.$apply(function(){ //$apply met a jour angular dans une fonction asynchrone 
 					$scope.lat = position.coords.latitude;//
 				    $scope.lng = position.coords.longitude;
-	        	});	        	
+	        	});
+
+	        	function openWeatherMap(){
+					$http({
+						method: 'GET',
+						url: 'http://api.openweathermap.org/data/2.5/weather?lat='+$scope.lat+'&lon='+$scope.lng+'&appid=1084fe7b11d7b5de600c40f277b2b42c&lang=fr&units=metric'			
+						//utiliser la lat et long récupéré dans le checkin au dessus
+
+					}).then(function successCallback(response){
+						$scope.weatherLocal = response.data;
+
+					}, function errorCallback(response){
+						//console.log(response);
+					});
+				};
+				openWeatherMap();
 	        });
+
+	        
 	    } 
 	    else { 
 	        //x.innerHTML = "Geolocation is not supported by this browser.";
@@ -126,10 +141,12 @@
 				});
 
 				function onSuccess(imageData) {
-					console.log('lulu');
 				    var image = document.getElementById('myImage');
 				    image.src = "data:image/jpeg;base64," + imageData;
 				    console.log(image.src);
+				    $scope.image64 = image.src;
+
+				    
 				}
 
 				function onFail(message) {
@@ -139,7 +156,11 @@
 		}, false);				
 
 		$scope.submit = function(){
-			localStorage.clear();
+			if ($scope.image64 == null) {
+				$scope.image64 = "";
+		    };
+
+			localStorage.clear(); //Vide la local storage à chaque clique sur le bouton submit, à retirer si l'on veux mettre plusieur chekin dans le local storage
 			console.log($scope.lat + ' ' + $scope.lng);
   			//localStorage (création du tableau dans lequel les coordonnées sont misent en localStorage)
   			var checkIns = localStorageService.get('checkIns');
@@ -149,7 +170,9 @@
 
   			var coordonnees = {
   				lat : $scope.lat,
-  				lng : $scope.lng 
+  				lng : $scope.lng,
+  				image64 : $scope.image64,
+  				weatherLocal: $scope.weatherLocal
   			}
   			checkIns.push(coordonnees);
   			localStorageService.set('checkIns', checkIns);
@@ -187,14 +210,12 @@
 
 	.controller('SynchroController', function($rootScope, $scope, $http, localStorageService, $routeParams){
 		$scope.$on('localStorageFait', function(){
-			console.log("evenement localStorageFait reçut");
 			var checkIns = localStorageService.get('checkIns');
 			$scope.nbSynchro = checkIns.length;
 		});
 
 		//Ajout d'un checkIn avec ses coordonnées géographiques enregistrées dans le localStorage
 		$scope.synchro = function(){
-			console.log('ici');
 			var checkIns = localStorageService.get('checkIns');
 			for (var i = 0; i < checkIns.length; i++) {
 				$http({
@@ -202,7 +223,9 @@
 					url: 'http://checkin-api.dev.cap-liberte.com/checkin',
 					data:{
 						lat: checkIns[i].lat,
-						lng: checkIns[i].lng
+						lng: checkIns[i].lng,
+						image_path: checkIns[i].image64,
+						weather: checkIns[i].weatherLocal
 					},
 					headers:{
 						'Content-Type': undefined

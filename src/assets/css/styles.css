@@ -1,5 +1,7 @@
 /*Import*/
 /*Css de la liste de CheckIns*/
+/*Import*/
+/*Couleur des variables*/
 a {
   text-decoration: none;
   color: #000000 !important; }
@@ -15,7 +17,7 @@ a:hover {
   float: left;
   width: 20%;
   padding: 10px 5px;
-  background-color: #26A69A;
+  background-color: #26a69a;
   margin: 10px; }
 
 /*Responsive*/
