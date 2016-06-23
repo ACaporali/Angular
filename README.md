@@ -9,6 +9,6 @@ Elle a pour principales fonctionnalités de se connecter grâce à des identifia
 
 <u>Installation :</u> Après le téléchargement des fichiers, déplacez vous à la racine du fichier via votre terminal. Par la suite, saisissez la commande  suivante : <strong>"npm install"</strong> pour récupèrer les modules NodeJS installés. Puis dans votre Git Bash, saisissez la commande <strong>"bower install"</strong> pour les packages Bower. Ces modules et packages sont nécessaires au bon fonctionnement du projet.
 
-<u>Lancement :</u> Pour pouvoir démarrer l'application  sur ordinateur, saisissez la commande <strong>"gulp serve" dans le dossier "Angular"</strong>.
-Pour démarrer l'application sur mobile, saisissez la commande <strong>"cordova run android --device" ou "cordova run ios" dans le dossier "Angular/cordova"
+<u>Lancement :</u> Pour pouvoir démarrer l'application  sur ordinateur, saisissez la commande <strong>"gulp serve"</strong> dans le dossier <strong>"Angular"</strong>.
+Pour démarrer l'application sur mobile, saisissez la commande <strong>"cordova run android --device"</strong> ou <strong>"cordova run ios"<strong> dans le dossier <strong>"Angular/cordova"</strong>.
 
